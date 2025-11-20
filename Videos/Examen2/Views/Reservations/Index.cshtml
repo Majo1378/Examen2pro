@@ -1,0 +1,37 @@
+@model IEnumerable<Examen2.Models.Reservation>
+@{
+    ViewData["Title"] = "Listado de Reservas";
+}
+<h2>Listado de Reservas</h2>
+
+<p><a asp-action="Create">Crear nueva reserva</a></p>
+
+<table border="1" cellpadding="6" cellspacing="0">
+    <thead>
+        <tr>
+            <th>Código</th>
+            <th>Profesor</th>
+            <th>Correo</th>
+            <th>Laboratorio</th>
+            <th>Fecha</th>
+            <th>Inicio</th>
+            <th>Fin</th>
+            <th>Motivo</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var r in Model)
+        {
+            <tr>
+                <td>@r.ReservationCode</td>
+                <td>@r.ProfessorName</td>
+                <td>@r.InstitutionalEmail</td>
+                <td>@r.Laboratory</td>
+                <td>@r.ReservationDate.ToString("yyyy-MM-dd")</td>
+                <td>@r.StartTime</td>
+                <td>@r.EndTime</td>
+                <td>@r.Reason</td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,58 @@
+@model Examen2.Models.Reservation
+@{
+    ViewData["Title"] = "Crear Reserva";
+}
+<h2>Crear Reserva</h2>
+
+<form asp-action="Create" method="post">
+    <div>
+        <label asp-for="ProfessorName"></label>
+        <input asp-for="ProfessorName" />
+        <span asp-validation-for="ProfessorName"></span>
+    </div>
+    <div>
+        <label asp-for="InstitutionalEmail"></label>
+        <input asp-for="InstitutionalEmail" />
+        <span asp-validation-for="InstitutionalEmail"></span>
+    </div>
+    <div>
+        <label asp-for="Laboratory"></label>
+        <select asp-for="Laboratory">
+            @foreach (var lab in (string[])ViewBag.Labs)
+            {
+                <option value="@lab">@lab</option>
+            }
+        </select>
+        <span asp-validation-for="Laboratory"></span>
+    </div>
+    <div>
+        <label asp-for="ReservationDate"></label>
+        <input asp-for="ReservationDate" type="date" />
+        <span asp-validation-for="ReservationDate"></span>
+    </div>
+    <div>
+        <label asp-for="StartTime"></label>
+        <input asp-for="StartTime" type="time" />
+        <span asp-validation-for="StartTime"></span>
+    </div>
+    <div>
+        <label asp-for="EndTime"></label>
+        <input asp-for="EndTime" type="time" />
+        <span asp-validation-for="EndTime"></span>
+    </div>
+    <div>
+        <label asp-for="Reason"></label>
+        <textarea asp-for="Reason"></textarea>
+        <span asp-validation-for="Reason"></span>
+    </div>
+    <div>
+        <label asp-for="ReservationCode"></label>
+        <input asp-for="ReservationCode" />
+        <span asp-validation-for="ReservationCode"></span>
+    </div>
+    <button type="submit">Guardar</button>
+</form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
